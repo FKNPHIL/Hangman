@@ -9,17 +9,20 @@ class Game {
     public static void hangman(){
         input = new Scanner(System.in);
         // array of strings containing words
-        String[] company = { "Maruti", "Tata", "Suzuki", "Ducati", "Toyota" };
+        String[] hard = { "foxglove", "thumbscrew", "Suzuki", "fuchsia", "transcript", "bagpipes", "peekaboo", "walkway", "jawbreaker", "buzzwords"};
+        String[] medium = {"lucky", "staff", "jazz", "junk", "brick", "memory", "house", "bike", "hike", "green"};
+        String[] easy = {"cat", "dog", "van", "cow", "bird", "ant", "car", "knee", "jar", "star"};
         System.out.println("    Welcome to HANGMAN GAME    ");
         Random obj = new Random();
         int Ran_num = obj.nextInt(5);
         // takes input of the word
-        String word = (company[Ran_num]);
+        String word = (hard[Ran_num]);
         word = word.toUpperCase();
         // To show the word in underscores
         String word1 = word.replaceAll("[A-Z]", "_ ");
         // play the game
         System.out.println("let's play the game");
+
         startGame(word, word1);
     }
     public static void startGame(String word, String word1){
@@ -36,10 +39,75 @@ class Game {
         boolean guessescontainsguess;
         String guesses = "";
         boolean guessinword;
+
         // while loop starts here
-        while (wrong < 5 && word1.contains("_")) {
+        while (wrong < 7 && word1.contains("_")) {
+            if( wrong == 0) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+            }
+            if( wrong == 1) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+            }
+            if( wrong == 2) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|    |");
+                System.out.println("|");
+                System.out.println("|");
+            }
+            if( wrong == 3) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|    |/");
+                System.out.println("|");
+                System.out.println("|");
+            }
+            if( wrong == 4) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|   \\|/");
+                System.out.println("|");
+                System.out.println("|");
+            }
+            if( wrong ==5) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|   \\|/");
+                System.out.println("|    |");
+                System.out.println("|");
+            }
+            if( wrong == 6) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|   \\|/");
+                System.out.println("|    |");
+                System.out.println("|   /");
+            }
+            if( wrong == 7) {
+                System.out.println(" ____");
+                System.out.println("|    |");
+                System.out.println("|    O");
+                System.out.println("|   \\|/");
+                System.out.println("|    |");
+                System.out.println("|   / \\");
+            }
             System.out.println(word1 + "\n");
-            int temp = 5 - wrong;
+            int temp = 7 - wrong;
             if (wrong != 0) {
                 // for picture 1
                 System.out.println("You have " + temp
@@ -114,13 +182,24 @@ class Game {
         } // while loop ends
 
         // if the lifelines finishes
-        if (wrong == 5) {
+        if (wrong == 7) {
+            System.out.println(" ____");
+            System.out.println("|    |");
+            System.out.println("|    O");
+            System.out.println("|   \\|/");
+            System.out.println("|    |");
+            System.out.println("|   / \\");
             System.out.println("YOU LOST!, maximum limit of incorrect guesses reached.");
         }
         else {
             // when solved
             System.out.print("The word is: " + word1 + "\n Well Played, you did it!!");
         }
+        System.out.println("Would you like to play again (y/n): ");
+        Scanner inputDevice = new Scanner(System.in);
+//        if( inputDevice == "y") {
+//            hangman();
+//        }
     }
     public static void main(String[] args){
         // play hangman game
