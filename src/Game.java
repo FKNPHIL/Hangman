@@ -197,9 +197,9 @@ class Game {
         }
         System.out.println("Would you like to play again (y/n): ");
         Scanner inputDevice = new Scanner(System.in);
-//        if( inputDevice == "y") {
-//            hangman();
-//        }
+        if( inputDevice.nextLine() == "y") {
+            hangman();
+        }
     }
     public static void main(String[] args){
         // play hangman game
